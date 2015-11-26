@@ -8,7 +8,7 @@
 # Each user needs to pass an ApiKey the first time you import this module
 # Replace your key for the AAA key below:
 # Import-Module Bing -ArgumentList AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA= -Force
-# After that you can just Import-Module Bing
+# After that you can just Import-Module Bing, or use 
 param(
   $ApiKey,
 

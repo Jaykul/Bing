@@ -1,10 +1,11 @@
 # ignore packages (this is for nuget stuff)
-/packages/*
+packages/*
 # ignore output (because we put stuff there)
-/output/*
+output/*
 # Ignore version number folders (these are our intermediate "output" directories for testing)
-/[0-9]*/
+Bing/[0-9]*/
+BingWallpaper/[0-9]*/
 # ignore PSTools for VisualStudio files and folders
-/bin/*
-/obj/*
+bin/*
+obj/*
 *.suo

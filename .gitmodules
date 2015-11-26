@@ -4,6 +4,6 @@
     branch = LanguageDecoupling
 
 [submodule "MultiMonitorHelper"]
-    path = projects/MultiMonitorHelper
+    path = BingWallpaper/projects/MultiMonitorHelper
     url = https://github.com/Jaykul/MultiMonitorHelper.git
     branch = master

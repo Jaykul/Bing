@@ -31,7 +31,7 @@ Set-StrictMode -Version Latest
 Write-Verbose "Import-Module $PSScriptRoot\lib\Pester" -Verbose:(!$Quiet)
 Import-Module $PSScriptRoot\lib\Pester -Force
 if(!$SkipBuild) {
-    &"$PSScriptRoot\Build.ps1" -Path:$Path -ModuleName:$ModuleName -RevisionNumber:$RevisionNumber
+    &"$PSScriptRoot\BuildModule.ps1" -Path:$Path -ModuleName:$ModuleName -RevisionNumber:$RevisionNumber
 }
 
 Write-Host "TESTING: $ModuleName with $Path\Test"
