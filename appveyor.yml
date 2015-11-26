@@ -1,0 +1,10 @@
+version: 1.0.0.{build}
+build: false
+install: 
+  - ps: .\1-Setup.ps1 -Verbose 
+build_script:
+  - ps: .\2-Build.ps1 -Verbose 
+test_script:
+  - ps: .\3-Test.ps1 # -Quiet
+on_finish:
+  - ps: .\4-Package.ps1 -Verbose | % { Push-AppveyorArtifact $_.FullName }

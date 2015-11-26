@@ -1,0 +1,9 @@
+[submodule "Pester"]
+    path = lib/Pester
+    url = https://github.com/Jaykul/Pester.git
+    branch = LanguageDecoupling
+
+[submodule "MultiMonitorHelper"]
+    path = projects/MultiMonitorHelper
+    url = https://github.com/Jaykul/MultiMonitorHelper.git
+    branch = master
