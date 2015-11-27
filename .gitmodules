@@ -1,9 +1,8 @@
-[submodule "Pester"]
-    path = lib/Pester
-    url = https://github.com/Jaykul/Pester.git
-    branch = LanguageDecoupling
-
 [submodule "MultiMonitorHelper"]
-    path = BingWallpaper/projects/MultiMonitorHelper
-    url = https://github.com/Jaykul/MultiMonitorHelper.git
-    branch = master
+	path = BingWallpaper/projects/MultiMonitorHelper
+	url = https://github.com/Jaykul/MultiMonitorHelper.git
+	branch = master
+[submodule "Pester"]
+	path = lib/Pester
+	url = https://github.com/Jaykul/Pester.git
+	branch = LanguageDecoupling
