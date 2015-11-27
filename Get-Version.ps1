@@ -14,7 +14,7 @@ param(
     Get-Module $Module -List | Select -First 1 -Expand Version 
 }
 
-if($RevisionNumber) {
+if($RevisionNumber -ne $null) {
     # For release builds we don't increment the build number
     $Build = if($Version.Build -le 0) { 0 } else { $Version.Build }
 } else {
