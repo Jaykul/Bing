@@ -32,5 +32,5 @@ foreach($parameter in $MyInvocation.MyCommand.Parameters.GetEnumerator()) {
 
 
 foreach($module in $Path) {
-    $PSScriptRoot\BuildModule.ps1 -Path $module @ParameterValues
+    &"$PSScriptRoot\TestModule.ps1" -Path $module @ParameterValues
 }

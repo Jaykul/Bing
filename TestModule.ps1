@@ -20,10 +20,12 @@ param(
     [ValidateNotNullOrEmpty()]
     [String]$CodeCovToken = ${ENV:CODECOV_TOKEN}
 )
+$Path = Convert-Path $Path
 $TestPath = Join-Path $Path Test
 $SourcePath = Join-Path $Path src
 $OutputPath = Join-Path $Path output
 $null = mkdir $OutputPath -Force
+$null = mkdir $TestPath -Force
 
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
@@ -34,7 +36,7 @@ if(!$SkipBuild) {
     &"$PSScriptRoot\BuildModule.ps1" -Path:$Path -ModuleName:$ModuleName -RevisionNumber:$RevisionNumber
 }
 
-Write-Host "TESTING: $ModuleName with $Path\Test"
+Write-Host "TESTING: $ModuleName with $TestPath"
 
 $Version = &"${PSScriptRoot}\Get-Version.ps1" -Module (Join-Path $Path\src "${ModuleName}.psd1") -DevBuild:$RevisionNumber -RevisionNumber:$RevisionNumber
 $ReleasePath = Join-Path $Path $Version
@@ -49,7 +51,7 @@ $Options = @{
 if($Quiet) { $Options.Quiet = $Quiet }
 if(!$ShowWip){ $Options.ExcludeTag = @("wip") }
 
-Set-Content "$Path\Test\.Do.Not.COMMIT.This.Steps.ps1" "Import-Module $ReleasePath\${ModuleName}.psd1 -Force"
+Set-Content "$TestPath\.Do.Not.COMMIT.This.Steps.ps1" "Import-Module $ReleasePath\${ModuleName}.psd1 -Force"
 
 # Show the commands they would have to run to get these results:
 Write-Host $(prompt) -NoNewLine
@@ -60,7 +62,7 @@ Write-Host Invoke-Gherkin -Path $TestPath -CodeCoverage "$ReleasePath\*.ps[m1]*"
 $TestResults = Invoke-Gherkin -Path $TestPath -CodeCoverage "$ReleasePath\*.ps[m1]*" -PassThru @Options
 
 Remove-Module $ModuleName -ErrorAction SilentlyContinue
-Remove-Item "$Path\Test\.Do.Not.COMMIT.This.Steps.ps1"
+Remove-Item "$TestPath\.Do.Not.COMMIT.This.Steps.ps1"
 
 $script:failedTestsCount = 0
 $script:passedTestsCount = 0
