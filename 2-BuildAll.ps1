@@ -15,19 +15,7 @@ param(
     # MSBuild Configuration (defaults to "Release")
     $Configuration="Release"
 )
-
-$ParameterValues = @{}
-foreach($parameter in $MyInvocation.MyCommand.Parameters.GetEnumerator()) {
-    try {
-        $key = $parameter.Key
-        $value = Get-Variable -Name $key -ValueOnly -ErrorAction SilentlyContinue -ErrorVariable NoVar
-        if(!$NoVar) {
-            $ParameterValues.$key = $value
-        }
-    } finally {}
-}
-Write-Verbose "ParameterValues:`n$($ParameterValues | Out-String)"
-
+$ParameterValues = . "$PSScriptRoot\Get-ParameterValues.ps1"
 $Env:PSModulePath += ";$PSScriptRoot"
 
 # Path of the folder to build from (defaults to the folder the Build script is in)

@@ -17,16 +17,7 @@ param(
     [String]$CodeCovToken = ${ENV:CODECOV_TOKEN}
 )
 
-$ParameterValues = @{}
-foreach($parameter in $MyInvocation.MyCommand.Parameters.GetEnumerator()) {
-    try {
-        $key = $parameter.Key
-        $value = Get-Variable -Name $key -ValueOnly -ErrorAction SilentlyContinue -ErrorVariable NoVar
-        if(!$NoVar) {
-            $ParameterValues.$key = $value
-        }
-    } finally {}
-}
+$ParameterValues = . "$PSScriptRoot\Get-ParameterValues.ps1"
 
 # Path of the folder to build from (defaults to the folder the Build script is in)
 [string[]]$Path = $(Get-ChildItem $PSScriptRoot\*\src | Split-Path)
