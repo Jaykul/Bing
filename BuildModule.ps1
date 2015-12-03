@@ -30,8 +30,9 @@ Write-Host "BUILDING: $ModuleName from $Path"
 $OutputPath = Join-Path $Path output
 $null = mkdir $OutputPath -Force
 
+Write-Verbose "Get-Version -Module ${ModuleName}.psd1 -RevisionNumber:$RevisionNumber"
 # If the RevisionNumber is specified as ZERO, this is a release build
-$Version = &"${PSScriptRoot}\Get-Version.ps1" -Module (Join-Path $Path\src "${ModuleName}.psd1") -DevBuild:$RevisionNumber -RevisionNumber:$RevisionNumber
+$Version = &"${PSScriptRoot}\Get-Version.ps1" -Module (Join-Path $Path\src "${ModuleName}.psd1") -RevisionNumber:$RevisionNumber
 $ReleasePath = Join-Path $Path $Version
 
 Write-Verbose "OUTPUT Release Path: $ReleasePath"

@@ -20,12 +20,13 @@ $ParameterValues = @{}
 foreach($parameter in $MyInvocation.MyCommand.Parameters.GetEnumerator()) {
     try {
         $key = $parameter.Key
-        if($value = Get-Variable -Name $key -ValueOnly -ErrorAction Ignore) {
+        $value = Get-Variable -Name $key -ValueOnly -ErrorAction SilentlyContinue -ErrorVariable NoVar
+        if(!$NoVar) {
             $ParameterValues.$key = $value
         }
     } finally {}
 }
-
+Write-Verbose "ParameterValues:`n$($ParameterValues | Out-String)"
 
 $Env:PSModulePath += ";$PSScriptRoot"
 
