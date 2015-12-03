@@ -3,7 +3,7 @@
 RootModule = 'BingWallpaper.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.3'
+ModuleVersion = '1.1.4'
 
 # ID used to uniquely identify this module
 GUID = '3d2acfb0-1702-4b09-bb07-f327dbcee8e4'
