@@ -3,7 +3,7 @@
 RootModule = 'BingWallpaper.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.4'
+ModuleVersion = '1.2.0'
 
 # ID used to uniquely identify this module
 GUID = '3d2acfb0-1702-4b09-bb07-f327dbcee8e4'
@@ -15,10 +15,10 @@ Author = 'Joel "Jaykul" Bennett'
 CompanyName = 'HuddledMasses.org'
 
 # Copyright statement for this module
-Copyright = '(c) 2015 Joel Bennett. All rights reserved.'
+Copyright = '(c) 2020 Joel Bennett. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Lets you set your wallpaper(s) from the Bing daily image. Requires Windows 7 and Windows Display Driver Mode (WDDM) display drivers.'
+Description = 'Lets you set your wallpaper(s) from the Bing daily image. Requires Windows 7+ and Windows Display Driver Mode (WDDM) display drivers.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -57,7 +57,7 @@ RequiredAssemblies = '.\Lib\CCDWrapper.dll', '.\Lib\MultiMonitorHelper.dll'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = 'Set-BingWallpaper', 'Get-ActiveDisplays'
+FunctionsToExport = 'Set-BingWallpaper', 'Get-ActiveDisplays', 'Write-OutlineText'
 
 # Cmdlets to export from this module
 # CmdletsToExport = '*'
@@ -94,7 +94,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated supported cultures and resolutions.'
+        ReleaseNotes = 'Added support for writing text onto the wallpaper.'
 
     } # End of PSData hashtable
 
